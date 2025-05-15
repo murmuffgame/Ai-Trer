@@ -1,0 +1,31 @@
+import { Card, CardContent } from "@/components/ui/card"; import { Button } from "@/components/ui/button"; import { Textarea } from "@/components/ui/textarea"; import { useState } from "react";
+
+export default function AIPoweredWeb() { const [input, setInput] = useState(""); const [response, setResponse] = useState("");
+
+const generateText = () => { // Simulated AI response setResponse(AI says: "${input}..." is interesting!); };
+
+return ( <div className="p-6 max-w-3xl mx-auto"> <h1 className="text-3xl font-bold mb-4">AI Powered Web Trend</h1> <p className="text-lg mb-6 text-gray-700"> Welcome to the future! This web interface shows how AI can power interactive content. Type something and let AI respond. </p>
+
+<Card className="mb-4">
+    <CardContent className="p-4">
+      <Textarea
+        placeholder="Type your thought..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        className="mb-4"
+      />
+      <Button onClick={generateText}>Generate AI Response</Button>
+    </CardContent>
+  </Card>
+
+  {response && (
+    <Card>
+      <CardContent className="p-4 text-blue-700 font-medium">
+        {response}
+      </CardContent>
+    </Card>
+  )}
+</div>
+
+); }
+
